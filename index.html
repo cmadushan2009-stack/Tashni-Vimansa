@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ගෞරව සහතික පත්‍රය - Sri Lankan Certificate</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Classic Sinhala & English Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600;700;800&family=Cinzel+Decorative:wght@700;900&family=Great+Vibes&family=Noto+Serif+Sinhala:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Typography & Background */
+        body {
+            font-family: 'Noto Serif Sinhala', serif;
+            background-color: #e5e7eb;
+            margin: 0;
+            padding: clamp(0.5rem, 2vw, 1.5rem);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .font-sinhala-title {
+            font-family: 'Abhaya Libre', 'Noto Serif Sinhala', serif;
+        }
+
+        .font-english-subtitle {
+            font-family: 'Cinzel Decorative', serif;
+        }
+
+        .font-signature {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Traditional Sri Lankan Cream Paper Texture */
+        .bg-cream-paper {
+            background-color: #fdfbf7;
+            background-image: 
+                radial-gradient(#d4af37 0.5px, transparent 0.5px), 
+                radial-gradient(#d4af37 0.5px, #fdfbf7 0.5px);
+            background-size: 36px 36px;
+            background-position: 0 0, 18px 18px;
+        }
+
+        /* Traditional Color Palette: Deep Maroon, Royal Blue & Gold */
+        .text-maroon { color: #6b0f1a; }
+        .bg-maroon { background-color: #6b0f1a; }
+        .border-maroon { border-color: #6b0f1a; }
+        
+        .text-royal-blue { color: #1e3a8a; }
+        .border-royal-blue { border-color: #1e3a8a; }
+
+        .text-gold { color: #b8860b; }
+        .border-gold { border-color: #d4af37; }
+
+        /* Fluid Container: Auto-height on mobile, A4 Landscape on Desktop/Tablet */
+        .certificate-wrapper {
+            width: 100%;
+            max-width: 1122px; /* ~297mm at 96dpi */
+            min-height: 480px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            box-sizing: border-box;
+            display: flex;
+        }
+
+        @media (min-width: 768px) {
+            .certificate-wrapper {
+                aspect-ratio: 297 / 210;
+            }
+        }
+
+        /* Ornate Multi-Layered Responsive Border */
+        .outer-frame {
+            border: clamp(6px, 1.3vw, 14px) solid #6b0f1a;
+            width: 100%;
+            padding: clamp(2px, 0.45vw, 5px);
+            box-sizing: border-box;
+            display: flex;
+        }
+
+        .middle-frame {
+            border: clamp(1.5px, 0.3vw, 3px) solid #d4af37;
+            width: 100%;
+            padding: clamp(2px, 0.3vw, 3px);
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+        }
+
+        .inner-frame {
+            border: 1.5px solid #1e3a8a;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: clamp(0.75rem, 2vw, 1.25rem);
+            padding: clamp(1.25rem, 3vw, 2.25rem) clamp(1rem, 4.5vw, 3.5rem);
+            box-sizing: border-box;
+            background: rgba(253, 251, 247, 0.96);
+        }
+
+        /* Center Lotus Watermark */
+        .watermark {
+            position: absolute;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 46%;
+            height: 46%;
+            opacity: 0.055;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Traditional Liyavela Corner Ornaments */
+        .corner-ornament {
+            position: absolute;
+            width: clamp(32px, 7.5vw, 85px);
+            height: clamp(32px, 7.5vw, 85px);
+            z-index: 10;
+            pointer-events: none;
+        }
+        .top-left { top: 4px; left: 4px; }
+        .top-right { top: 4px; right: 4px; transform: scaleX(-1); }
+        .bottom-left { bottom: 4px; left: 4px; transform: scaleY(-1); }
+        .bottom-right { bottom: 4px; right: 4px; transform: scale(-1, -1); }
+
+        /* Fluid Typography Scaling for All Screen Sizes */
+        .fluid-org-si { font-size: clamp(0.95rem, 2.1vw, 1.5rem); line-height: 1.3; }
+        .fluid-org-en { font-size: clamp(0.6rem, 1.05vw, 0.75rem); letter-spacing: 0.15em; }
+        .fluid-title-si { font-size: clamp(1.5rem, 4.2vw, 3rem); line-height: 1.15; }
+        .fluid-title-en { font-size: clamp(0.7rem, 1.55vw, 1.125rem); }
+        .fluid-intro { font-size: clamp(0.75rem, 1.35vw, 1rem); }
+        .fluid-recipient { font-size: clamp(1.65rem, 4vw, 2.85rem); line-height: 1.2; }
+        .fluid-citation { font-size: clamp(0.75rem, 1.3vw, 0.95rem); line-height: 1.6; }
+        
+        /* Footer Fluid Scaling */
+        .fluid-sig-script { font-size: clamp(1.1rem, 2.3vw, 1.85rem); line-height: 1.1; }
+        .fluid-sig-role { font-size: clamp(0.65rem, 1.2vw, 0.875rem); }
+        .fluid-date { font-size: clamp(0.6rem, 1.05vw, 0.75rem); }
+
+        /* Exact A4 Landscape Print Configuration */
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 0;
+            }
+            body {
+                background: none;
+                padding: 0;
+                margin: 0;
+                width: 100vw;
+                height: 100vh;
+            }
+            .certificate-wrapper {
+                width: 297mm !important;
+                height: 210mm !important;
+                max-width: none !important;
+                min-height: 0 !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                page-break-inside: avoid;
+            }
+            .outer-frame { border-width: 14px !important; padding: 5px !important; }
+            .middle-frame { border-width: 3px !important; padding: 3px !important; }
+            .inner-frame { padding: 2.25rem 3.5rem !important; gap: 0 !important; }
+            .corner-ornament { width: 85px !important; height: 85px !important; top: 6px; left: 6px; }
+            .top-right { right: 6px; left: auto; }
+            .bottom-left { bottom: 6px; top: auto; }
+            .bottom-right { bottom: 6px; right: 6px; top: auto; left: auto; }
+            .fluid-org-si { font-size: 1.5rem !important; }
+            .fluid-org-en { font-size: 0.75rem !important; }
+            .fluid-title-si { font-size: 3rem !important; }
+            .fluid-title-en { font-size: 1.125rem !important; }
+            .fluid-intro { font-size: 1rem !important; }
+            .fluid-recipient { font-size: 3rem !important; }
+            .fluid-citation { font-size: 0.95rem !important; }
+            .fluid-sig-script { font-size: 1.875rem !important; }
+            .fluid-sig-role { font-size: 0.875rem !important; }
+            .fluid-date { font-size: 0.75rem !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Standalone Responsive A4 Landscape Traditional Sri Lankan Certificate -->
+    <div class="certificate-wrapper bg-cream-paper">
+        <div class="outer-frame">
+            <div class="middle-frame">
+                
+                <!-- Traditional Liyavela / Floral Corner SVG Ornaments -->
+                <svg class="corner-ornament top-left" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2H98C66 2 50 18 50 50C18 50 2 66 2 98V2Z" fill="#6b0f1a"/>
+                    <path d="M8 8H80C56 8 42 22 42 42C22 42 8 56 8 80V8Z" stroke="#d4af37" stroke-width="2.5"/>
+                    <path d="M14 14H60C44 14 34 24 34 34C24 34 14 44 14 60V14Z" stroke="#1e3a8a" stroke-width="1"/>
+                    <circle cx="22" cy="22" r="5.5" fill="#d4af37"/>
+                    <path d="M35 13C35 25 25 35 13 35" stroke="#f7e08b" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="48" cy="14" r="2.5" fill="#d4af37"/>
+                    <circle cx="14" cy="48" r="2.5" fill="#d4af37"/>
+                </svg>
+
+                <svg class="corner-ornament top-right" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2H98C66 2 50 18 50 50C18 50 2 66 2 98V2Z" fill="#6b0f1a"/>
+                    <path d="M8 8H80C56 8 42 22 42 42C22 42 8 56 8 80V8Z" stroke="#d4af37" stroke-width="2.5"/>
+                    <path d="M14 14H60C44 14 34 24 34 34C24 34 14 44 14 60V14Z" stroke="#1e3a8a" stroke-width="1"/>
+                    <circle cx="22" cy="22" r="5.5" fill="#d4af37"/>
+                    <path d="M35 13C35 25 25 35 13 35" stroke="#f7e08b" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="48" cy="14" r="2.5" fill="#d4af37"/>
+                    <circle cx="14" cy="48" r="2.5" fill="#d4af37"/>
+                </svg>
+
+                <svg class="corner-ornament bottom-left" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2H98C66 2 50 18 50 50C18 50 2 66 2 98V2Z" fill="#6b0f1a"/>
+                    <path d="M8 8H80C56 8 42 22 42 42C22 42 8 56 8 80V8Z" stroke="#d4af37" stroke-width="2.5"/>
+                    <path d="M14 14H60C44 14 34 24 34 34C24 34 14 44 14 60V14Z" stroke="#1e3a8a" stroke-width="1"/>
+                    <circle cx="22" cy="22" r="5.5" fill="#d4af37"/>
+                    <path d="M35 13C35 25 25 35 13 35" stroke="#f7e08b" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="48" cy="14" r="2.5" fill="#d4af37"/>
+                    <circle cx="14" cy="48" r="2.5" fill="#d4af37"/>
+                </svg>
+
+                <svg class="corner-ornament bottom-right" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2H98C66 2 50 18 50 50C18 50 2 66 2 98V2Z" fill="#6b0f1a"/>
+                    <path d="M8 8H80C56 8 42 22 42 42C22 42 8 56 8 80V8Z" stroke="#d4af37" stroke-width="2.5"/>
+                    <path d="M14 14H60C44 14 34 24 34 34C24 34 14 44 14 60V14Z" stroke="#1e3a8a" stroke-width="1"/>
+                    <circle cx="22" cy="22" r="5.5" fill="#d4af37"/>
+                    <path d="M35 13C35 25 25 35 13 35" stroke="#f7e08b" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="48" cy="14" r="2.5" fill="#d4af37"/>
+                    <circle cx="14" cy="48" r="2.5" fill="#d4af37"/>
+                </svg>
+
+                <div class="inner-frame">
+                    <!-- Subtle Center Lotus Flower Watermark -->
+                    <svg class="watermark" viewBox="0 0 200 200" fill="#6b0f1a" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 18C116 55 126 86 100 132C74 86 84 55 100 18Z"/>
+                        <path d="M100 132C136 112 166 86 176 50C140 60 116 92 100 132Z"/>
+                        <path d="M100 132C64 112 34 86 24 50C60 60 84 92 100 132Z"/>
+                        <path d="M100 137C146 137 182 122 192 96C156 96 126 112 100 137Z"/>
+                        <path d="M100 137C54 137 18 122 8 96C44 96 74 112 100 137Z"/>
+                        <path d="M58 153C85 168 115 168 142 153C115 145 85 145 58 153Z"/>
+                    </svg>
+
+                    <!-- Header: Lotus Emblem & Institution Name -->
+                    <header class="text-center relative z-10 px-4">
+                        <!-- Lotus Flower Emblem -->
+                        <div class="flex justify-center mb-[clamp(0.25rem,0.6vw,0.5rem)]">
+                            <svg class="w-[clamp(36px,5.5vw,64px)] h-[clamp(36px,5.5vw,64px)] drop-shadow-sm" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="42" cy="42" r="38" fill="#6b0f1a" stroke="#d4af37" stroke-width="2.5"/>
+                                <circle cx="42" cy="42" r="33" stroke="#f7e08b" stroke-width="1" stroke-dasharray="3 2"/>
+                                <!-- Stylized Traditional Lotus -->
+                                <path d="M42 14C48.5 28 52.5 40 42 57C31.5 40 35.5 28 42 14Z" fill="#d4af37"/>
+                                <path d="M42 57C56 48.5 67.5 38 71.5 25C58 29 48.5 41 42 57Z" fill="#f7e08b"/>
+                                <path d="M42 57C28 48.5 16.5 38 12.5 25C26 29 35.5 41 42 57Z" fill="#f7e08b"/>
+                                <path d="M42 59C60 59 73 53 76 43C63 43 52 49 42 59Z" fill="#d4af37"/>
+                                <path d="M42 59C24 59 11 53 8 43C21 43 32 49 42 59Z" fill="#d4af37"/>
+                                <path d="M25 63C35.5 68.5 48.5 68.5 59 63C48.5 60 35.5 60 25 63Z" fill="#f7e08b"/>
+                            </svg>
+                        </div>
+
+                        <h2 class="fluid-org-si font-bold text-maroon tracking-wide">
+                            සමස්ත ලංකා ඔබද බුද්ධික, මන්ද බුද්ධික තරගාවලිය
+                        </h2>
+                        <p class="font-english-subtitle fluid-org-en font-bold text-royal-blue uppercase mt-0.5">
+                            All-Island 'Genius or Foolish' Competition
+                        </p>
+                    </header>
+
+                    <!-- Main Body: Title, Recipient & Citation -->
+                    <section class="text-center relative z-10 my-auto py-1">
+                        <!-- Ornamental Divider -->
+                        <div class="flex items-center justify-center gap-2 sm:gap-3 mb-[clamp(0.25rem,0.5vw,0.5rem)]">
+                            <span class="h-[1px] sm:h-[1.5px] w-[clamp(45px,11vw,128px)] bg-gradient-to-r from-transparent via-amber-600 to-amber-700"></span>
+                            <span class="text-gold text-[clamp(0.7rem,1.2vw,1rem)]">❖</span>
+                            <span class="h-[1px] sm:h-[1.5px] w-[clamp(45px,11vw,128px)] bg-gradient-to-l from-transparent via-amber-600 to-amber-700"></span>
+                        </div>
+
+                        <!-- Certificate Title -->
+                        <h1 class="font-sinhala-title fluid-title-si font-extrabold text-maroon tracking-wide">
+                            ගෞරව සහතික පත්‍රය
+                        </h1>
+                        <p class="font-english-subtitle fluid-title-en font-bold text-gold tracking-widest mt-0.5">
+                            Certificate of Honour &amp; Excellence
+                        </p>
+
+                        <!-- Presentation Intro -->
+                        <p class="fluid-intro text-gray-700 mt-[clamp(0.5rem,1.2vw,1rem)] font-medium">
+                            මෙම ගෞරව සහතික පත්‍රය සාදරයෙන් පිරිනමනු ලබන්නේ
+                        </p>
+
+                        <!-- Recipient Name -->
+                        <div class="my-[clamp(0.4rem,1vw,0.85rem)] px-2">
+                            <p class="font-sinhala-title fluid-recipient font-bold text-royal-blue border-b-[1.5px] sm:border-b-2 border-gold inline-block pb-[clamp(0.15rem,0.4vw,0.35rem)] px-[clamp(1.25rem,4vw,2.5rem)] tracking-wide">
+                                Tashni Vimansa
+                            </p>
+                        </div>
+
+                        <!-- Citation / Reason Text -->
+                        <div class="max-w-3xl mx-auto px-2 sm:px-4 mt-[clamp(0.35rem,0.6vw,0.5rem)]">
+                            <p class="fluid-citation text-gray-800 font-medium">
+                                2026 සමස්ත ලංකා ඔබද බුද්ධික, මන්ද බුද්ධික තරගාවලිය තුළ විශිෂ්ට කුසලතා දක්වමින් ප්‍රථම ස්ථානය දිනා ගැනීම වෙනුවෙන් මෙම ගෞරව සහතික පත්‍රය පිරිනමනු ලැබේ.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Footer: Organizer (Left), Gold Seal & Date (Center), Chief Guest (Right) -->
+                    <footer class="relative z-10 pt-2">
+                        <div class="grid grid-cols-3 items-start gap-2 sm:gap-4 text-center">
+                            
+                            <!-- Left Signature: Organizer (සංවිධායක) -->
+                            <div class="flex flex-col items-center pt-2 sm:pt-4">
+                                <div class="font-signature fluid-sig-script text-royal-blue opacity-85 mb-0.5 select-none">
+                                    S.C.Madushan
+                                </div>
+                                <div class="w-full max-w-[115px] sm:max-w-[205px] border-t border-gray-800 pt-1">
+                                    <p class="fluid-sig-role font-bold text-maroon leading-snug">සංවිධායක</p>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Center: Gold Ribbon Seal & Date -->
+                            <div class="flex flex-col items-center">
+                                <!-- Ornate Gold Ribbon Seal SVG -->
+                                <div class="mb-1.5">
+                                    <svg class="w-[clamp(42px,6.5vw,76px)] h-[clamp(42px,6.5vw,76px)] drop-shadow-md" viewBox="0 0 120 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <!-- Dual Maroon & Gold Ribbons -->
+                                        <path d="M44 84L35 118L47 110L55 119L58 88" fill="#6b0f1a" stroke="#d4af37" stroke-width="1.5"/>
+                                        <path d="M76 84L85 118L73 110L65 119L62 88" fill="#6b0f1a" stroke="#d4af37" stroke-width="1.5"/>
+                                        
+                                        <!-- Starburst Gold Foil Seal -->
+                                        <path d="M60 4L67.8 14.5L80.5 10L83 22.8L96 23.5L93 36.2L104.5 42L96.5 52.5L104.5 63L93 68.8L96 81.5L83 82.2L80.5 95L67.8 90.5L60 101L52.2 90.5L39.5 95L37 82.2L24 81.5L27 68.8L15.5 63L23.5 52.5L15.5 42L27 36.2L24 23.5L37 22.8L39.5 10L52.2 14.5L60 4Z" fill="url(#goldRibbonGrad)" stroke="#8a5a00" stroke-width="1.5"/>
+                                        
+                                        <!-- Inner Royal Blue & Gold Medallion -->
+                                        <circle cx="60" cy="52.5" r="32" fill="#1e3a8a" stroke="#f7e08b" stroke-width="2"/>
+                                        <circle cx="60" cy="52.5" r="27" stroke="#d4af37" stroke-width="1" stroke-dasharray="2.5 2"/>
+                                        
+                                        <!-- Mini Lotus Emblem Inside Seal -->
+                                        <path d="M60 35C63.5 42.5 65.5 49 60 58C54.5 49 56.5 42.5 60 35Z" fill="#f7e08b"/>
+                                        <path d="M60 58C67.5 53.5 73.5 48 75.5 41C68.5 43 63.5 49.5 60 58Z" fill="#d4af37"/>
+                                        <path d="M60 58C52.5 53.5 46.5 48 44.5 41C51.5 43 56.5 49.5 60 58Z" fill="#d4af37"/>
+                                        <text x="60" y="69" text-anchor="middle" fill="#f7e08b" font-size="7.5" font-weight="bold" letter-spacing="1">SRI LANKA</text>
+
+                                        <defs>
+                                            <linearGradient id="goldRibbonGrad" x1="15.5" y1="4" x2="104.5" y2="101" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#fceb9c"/>
+                                                <stop offset="0.5" stop-color="#d4af37"/>
+                                                <stop offset="1" stop-color="#996c06"/>
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                
+                                <!-- Date -->
+                                <p class="fluid-date font-bold text-maroon bg-amber-50/90 px-[clamp(0.45rem,1.4vw,1rem)] py-[clamp(0.15rem,0.3vw,0.25rem)] rounded-full border border-amber-400 whitespace-nowrap leading-tight">
+                                    දිනය: 2026 නොවැම්බර් 19
+                                </p>
+                            </div>
+
+                            <!-- Right Signature: Chief Guest (ප්‍රධාන ආරාධිත අමුත්තා) -->
+                            <div class="flex flex-col items-center pt-2 sm:pt-4">
+                                <div class="font-signature fluid-sig-script text-royal-blue opacity-85 mb-0.5 select-none">
+                                    S.Chamidu Madushan
+                                </div>
+                                <div class="w-full max-w-[115px] sm:max-w-[205px] border-t border-gray-800 pt-1">
+                                    <p class="fluid-sig-role font-bold text-maroon leading-snug">ප්‍රධාන ආරාධිත අමුත්තා</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
